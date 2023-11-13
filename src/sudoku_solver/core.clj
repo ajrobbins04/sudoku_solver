@@ -76,9 +76,6 @@
 (defn create-grid-vector [grid-chars]
   (vec (map #(Integer/parseInt (str %)) grid-chars)))
 
-;; initial vector containing grid values
-(def grid (create-grid-vector grid-chars))
-
 ;; predicate method to check if val in grid
 ;; is within the inclusive range of 1-9
 (defn is-valid-value? [val]
@@ -87,33 +84,23 @@
 ;; a map is formed by pairing every square with a value from 
 ;; the grid vector based on matching order.
 (def grid-values 
-  (zipmap squares (map #(if (is-valid-value? %) % nil) grid)))
+  (zipmap squares (map #(if (is-valid-value? %) % nil) (create-grid-vector grid-chars))))
+
 
 ;; checks if the square is initially filled w/a value.
 ;; a predicate function for parse-grid.
 (defn is-filled? [square] 
   (let [value (get grid-values square)] (not (= value nil))))
 
-;; whittles down possible values from a collection
-;; until a logical false is encountered
-(defn reduce-true
-  [func val collection]
-  (when val   ;; check incoming val argument, is truthy 
-    (loop [val val collection collection]   ;; bind the values from the arguments to the loop variables
-      (if (empty? collection)   ;; if the collection is empty then return val
-        val
-        (when-let [val* (func val (first collection))] ;; when-let only binds the result to val if the result is truthy
-          (recur val* (rest collection)))))))          ;; updated values will be used to re-enter the loop
-
-
 ;; Converts grid squares into a map as the key w/all
 ;; possible digit values as its corresponding value.
-(defn parse-grid []
+(def grid 
   (into {} (for [square squares]
              (let [value (get grid-values square)]
                (if (is-filled? square) 
                  [square #{value}]     ;; assign digits 1-9 to empty squares
                  [square digits])))))  ;; assign actual value to filled squares
+grid
 
 ; ==============================================
 ;
@@ -161,10 +148,11 @@
 
 
 (declare assign)
+(declare reduce-true)
 
 (defn eliminate [poss-values square val]
   (cond
-    ;; Return possible values map when val isn't in the possible values for square
+    ;; Return possible values when val isn't found in it
     (not (in-poss-values? (poss-values square) val)) poss-values
     (= #{val} (poss-values square)) poss-values
     :else (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
@@ -174,10 +162,22 @@
 
 (eliminate poss [:d6] 1)
 
-
+(defn search [grid]
+  ())
 ; ===================================
 ; Utility Functions
 ; ===================================
+
+;; whittles down possible values from a collection
+;; until a logical false is encountered
+(defn reduce-true
+  [func val collection]
+  (when val   ;; check incoming val argument, is truthy 
+    (loop [val val collection collection]   ;; bind the values from the arguments to the loop variables
+      (if (empty? collection)   ;; if the collection is empty then return val
+        val
+        (when-let [val* (func val (first collection))] ;; when-let only binds the result to val if the result is truthy
+          (recur val* (rest collection)))))))          ;; updated values will be used to re-enter the loop
 
 (defn assign [poss-values square val] 
   ;; eliminate is applied w/in reduce-true
