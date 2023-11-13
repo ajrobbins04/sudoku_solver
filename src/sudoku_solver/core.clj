@@ -132,16 +132,6 @@
 (defn in-poss-values? [poss-values val]
   (if (some #(= val %) poss-values) true false))
 
-;; Attempts to eliminate val from the possible
-;; values map associated w/a square. Will apply
-;; constraint propagation whenever possible.
-(defn eliminate [poss-values square val]
-  (cond
-    (not (in-poss-values? (poss-values square) val)) poss-values ;; don't continue if
-    (when-not (= #{val} (poss-values square)))  ;; don't continue if val is the final value
-      (let [poss-values* 
-            (assoc-in poss-values square :when (not (= square val)) val)]  ;; remove val as a possible value for square
-        poss-values*)))  ;; '*' indicates that the original has been replaced
 
 (def poss {[:e9] #{8},
  [:d7] #{9},
@@ -193,29 +183,9 @@
   [:f8]
   [:f9]]})
 
-(defn elim [poss-values square val]
-  (cond 
-    ;; return possible values map when val isn't in the possible values for square
-    (not (in-poss-values? (poss-values square) val)) poss-values     
-    ;; return possible values map when val is the only possible value for square
-    (= #{val} (poss-values square)) poss-values
-    ;; val can be removed from the possible-values for square
-    :else (let [poss-values (assoc-in poss-values [square] (disj (poss-values square) val))] poss-values)))
-  
-
-(defn elim [poss-values square val]
-  (cond 
-    ;; return possible values map when val isn't in the possible values for square
-    (not (in-poss-values? (poss-values square) val)) poss-values     
-    ;; return possible values map when val is the only possible value for square
-    (= #{val} (poss-values square)) poss-values
-    ;; val can be removed from the possible-values for square
-    :else (let [poss-values (assoc-in poss-values [square] (disj (poss-values square) val))] poss-values
-               (when (= #{val} (poss-values square))
-                 (reduce-true #(elim poss-values square (first (poss-values square))) poss-values (peers square)) )poss-values)))
   
 (defn in-peer-pv [])
-(defn elim [poss-values square val]
+(defn eliminate [poss-values square val]
   (cond 
     ;; return possible values map when val isn't in the possible values for square
     (not (in-poss-values? (poss-values square) val)) poss-values     
@@ -224,9 +194,9 @@
     ;; val can be removed from the possible-values for square
     :else (let [poss-values (assoc-in poss-values [square] (disj (poss-values square) val))] poss-values
                (if (= #{val} (poss-values square))
-                 (reduce-true #(elim poss-values square (first (poss-values square))) poss-values (peers square)) )poss-values)))
+                 (reduce-true #(eliminate poss-values square (first (poss-values square))) poss-values (peers square)) )poss-values)))
 
-(elim poss [:a7] 3)
+(eliminate poss [:a7] 3)
 ; ===================================
 ; Utility Functions
 ; ===================================
