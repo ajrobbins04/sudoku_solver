@@ -64,8 +64,7 @@
   (let [combined-units (combine-nested-units units-by-key)]
     (remove-key-from-value combined-units)))
 
-(peers [:a1])
-    
+
 ; =============================
 ; Define the Playing Grid
 ; =============================
@@ -161,22 +160,28 @@
   [:b3]]})
 
 
+(declare assign)
+
 (defn eliminate [poss-values square val]
   (cond
     ;; Return possible values map when val isn't in the possible values for square
     (not (in-poss-values? (poss-values square) val)) poss-values
     (= #{val} (poss-values square)) poss-values
-    :else (let [*poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
-            (when (= #{val} (poss-values square))
-              (reduce-true #(eliminate poss-values square (first (poss-values square))) *poss-values (peers square)))
-            *poss-values)))
+    :else (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
+            (if (= 1 (count (new-poss-values square)))
+                (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
+                new-poss-values))))
 
 (eliminate poss [:d6] 1)
+
+
 ; ===================================
 ; Utility Functions
 ; ===================================
 
 (defn assign [poss-values square val] 
   ;; eliminate is applied w/in reduce-true
-  (reduce-true (eliminate poss-values square val) poss-values (disj (poss-values square) val))) ;; reduce-true 
+  (reduce-true #(eliminate poss-values square val) poss-values (disj (poss-values square) val)))
+
+ 
 

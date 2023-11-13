@@ -139,3 +139,163 @@ clj꞉sudoku-solver.core꞉> 
  [:a1] #{7 1 4 6 3 2 9 5 8},
  [:h1] #{8}}
 clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1},
+ [:b3] #{1 8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1},
+ [:b3] #{1 8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/reduce-true (core.clj:106).
+; Wrong number of args (2) passed to: sudoku-solver.core/eliminate/fn--8403
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/reduce-true (core.clj:106).
+; Wrong number of args (2) passed to: sudoku-solver.core/eliminate/fn--8408
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/reduce-true (core.clj:106).
+; Wrong number of args (2) passed to: sudoku-solver.core/eliminate/fn--8413
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1},
+ [:b3] #{1 8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1},
+ [:b3] #{1 8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+Eliminating 1 from [:d6]
+Singular value in square, propagating to peers
+Eliminating 7 from [:e6]
+Singular value in square, propagating to peers
+Eliminating 1 from [:b3]
+Singular value in square, propagating to peers
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{1},
+ [:b3] #{8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+Eliminating 1 from [:d6]
+Singular value in square, propagating to peers
+Eliminating 7 from [:e6]
+Singular value in square, propagating to peers
+Eliminating 1 from [:b3]
+Singular value in square, propagating to peers
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{1},
+ [:b3] #{8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7},
+ [:b3] #{8},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6 3},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
