@@ -139,10 +139,9 @@
  [:h7] #{7 1 4 6 3 2 9 5 8},
  [:d8] #{7 1 4 6 3 2 9 5 8},
  [:g5] #{7 1 4 6 3 2 9 5 8},
- [:d6] #{2},
- [:e6] #{7 1 4 6 3 2 9 5 8},
- [:b3] #{7 1 4 6 3 2 9 5 8},
- [:h9] #{9},
+ [:d6] #{2 1},
+ [:e6] #{7 1} 
+ [:b3] #{8 1},
  [:i5] #{1},
  [:e4] #{7 1 4 6 3 2 9 5 8},
  [:g4] #{6 5 3 2 1},
@@ -157,46 +156,22 @@
   [:g4]
   [:a3]
   [:a1]],
- [:d7]
- [[:d1]
-  [:d2]
-  [:d3]
-  [:d4]
-  [:d5]
-  [:d6]
-  [:d8]
-  [:d9]
-  [:a7]
-  [:b7]
-  [:c7]
-  [:e7]
-  [:f7]
-  [:g7]
-  [:h7]
-  [:i7]
-  [:d8]
-  [:d9]
-  [:e7]
-  [:e8]
-  [:e9]
-  [:f7]
-  [:f8]
-  [:f9]]})
+ [:d6]
+ [[:e6]
+  [:b3]]})
 
-  
-(defn in-peer-pv [])
+
 (defn eliminate [poss-values square val]
-  (cond 
-    ;; return possible values map when val isn't in the possible values for square
-    (not (in-poss-values? (poss-values square) val)) poss-values     
-    ;; return possible values map when val is the only possible value for square
+  (cond
+    ;; Return possible values map when val isn't in the possible values for square
+    (not (in-poss-values? (poss-values square) val)) poss-values
     (= #{val} (poss-values square)) poss-values
-    ;; val can be removed from the possible-values for square
-    :else (let [poss-values (assoc-in poss-values [square] (disj (poss-values square) val))] poss-values
-               (if (= #{val} (poss-values square))
-                 (reduce-true #(eliminate poss-values square (first (poss-values square))) poss-values (peers square)) )poss-values)))
+    :else (let [*poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
+            (when (= #{val} (poss-values square))
+              (reduce-true #(eliminate poss-values square (first (poss-values square))) *poss-values (peers square)))
+            *poss-values)))
 
-(eliminate poss [:a7] 3)
+(eliminate poss [:d6] 1)
 ; ===================================
 ; Utility Functions
 ; ===================================
