@@ -1,6 +1,7 @@
 ;; specify project's namespace
 (ns sudoku-solver.core)
 
+
 ; =============================
 ; Implement Global Variables 
 ; =============================
@@ -71,37 +72,37 @@
 
 (def grid-chars "003020600900305001001806400008102900700000008006708200002609500800203009005010300")
 
-;; create a new vector by converting each 
-;; character in grid-chars to a string, then an int
-(defn create-grid-vector [grid-chars]
-  (vec (map #(Integer/parseInt (str %)) grid-chars)))
-
-;; predicate method to check if val in grid
-;; is within the inclusive range of 1-9
+;; check if val is w/in the inclusive range of 1-9
 (defn is-valid-value? [val]
   (and (>= val 1) (<= val 9)))
 
-;; a map is formed by pairing every square with a value from 
-;; the grid vector based on matching order.
-(def grid-values 
-  (zipmap squares (map #(if (is-valid-value? %) % nil) (create-grid-vector grid-chars))))
+;; create a vector for the grid that holds integers
+(defn create-int-grid [grid-chars]
+  (vec (map #(Integer/parseInt (str %)) grid-chars)))
 
+;; a map is formed by pairing every square with its
+;; assigned value 
+(defn add-initial-values [grid-chars]
+  (zipmap squares (map #(if (is-valid-value? %) % nil) (create-int-grid grid-chars))))
 
 ;; checks if the square is initially filled w/a value.
 ;; a predicate function for parse-grid.
-(defn is-filled? [square] 
-  (let [value (get grid-values square)] (not (= value nil))))
+(defn is-filled? [value] 
+  (not (= value nil)))
 
 ;; Converts grid squares into a map as the key w/all
 ;; possible digit values as its corresponding value.
-(def grid 
-  (into {} (for [square squares]
-             (let [value (get grid-values square)]
-               (if (is-filled? square) 
-                 [square #{value}]     ;; assign digits 1-9 to empty squares
-                 [square digits])))))  ;; assign actual value to filled squares
-grid
+(defn parse-grid [grid]
+  (let [grid-values (add-initial-values grid)]
+    (into {} (for [square squares]
+             (let [value (grid-values square)]
+               (if (is-filled? value) 
+                 [square #{value}]      ;; assign digits 1-9 to empty squares
+                 [square digits]))))))  ;; assign actual value to filled squares
 
+
+
+(parse-grid grid-chars)
 ; ==============================================
 ;
 ; Constraint Propagation 
@@ -118,35 +119,6 @@ grid
 (defn in-poss-values? [poss-values val]
   (if (some #(= val %) poss-values) true false))
 
-
-(def poss {[:e9] #{8},
- [:d7] #{9},
- [:c2] #{7 1 4 6 3 2 9 5 8},
- [:h7] #{7 1 4 6 3 2 9 5 8},
- [:d8] #{7 1 4 6 3 2 9 5 8},
- [:g5] #{7 1 4 6 3 2 9 5 8},
- [:d6] #{2 1},
- [:e6] #{7 1} 
- [:b3] #{8 1},
- [:i5] #{1},
- [:e4] #{7 1 4 6 3 2 9 5 8},
- [:g4] #{6 5 3 2 1},
- [:a7] #{6 3},
- [:a3] #{3 2},
- [:a1] #{7 1 4 6 3 2 9 5 8},
- [:h1] #{8}})
-
-
-(def peers {[:a7]
- [[:e4]
-  [:g4]
-  [:a3]
-  [:a1]],
- [:d6]
- [[:e6]
-  [:b3]]})
-
-
 (declare assign)
 (declare reduce-true)
 
@@ -160,9 +132,8 @@ grid
                 (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
                 new-poss-values))))
 
-(eliminate poss [:d6] 1)
 
-(defn search [grid]
+(defn search [poss-grid-values]
   ())
 ; ===================================
 ; Utility Functions
@@ -183,5 +154,5 @@ grid
   ;; eliminate is applied w/in reduce-true
   (reduce-true #(eliminate poss-values square val) poss-values (disj (poss-values square) val)))
 
- 
-
+()
+(defn solve [grid] (-> grid grid-values parse-grid search))
