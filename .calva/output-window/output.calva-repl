@@ -1,0 +1,2327 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd /Users/AmberRobbins/portfolio/sudoku_solver ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:60913 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉sudoku-solver.core꞉>  ; Use `alt+enter` to evaluate
+clj꞉sudoku-solver.core꞉> 
+; Jack-in done.
+clj꞉sudoku-solver.core꞉> 
+; WARNING: test already refers to: #'clojure.core/test in namespace: sudoku-solver.core, being replaced by: #'sudoku-solver.core/test
+; 
+; Syntax error compiling at (src/sudoku_solver/core.clj:134:13).
+; Unable to resolve symbol: values in this context
+clj꞉sudoku-solver.core꞉> 
+; Syntax error compiling at (src/sudoku_solver/core.clj:134:13).
+; Unable to resolve symbol: values in this context
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/digits
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/rows
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/cols
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/squares
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/unit-rows
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/unit-cols
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/unit-squares
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/all-units
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-unit?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/units-by-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/combine-nested-units
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/remove-key-from-value
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/peers
+clj꞉sudoku-solver.core꞉> 
+[[:a2]
+ [:a3]
+ [:a4]
+ [:a5]
+ [:a6]
+ [:a7]
+ [:a8]
+ [:a9]
+ [:b1]
+ [:c1]
+ [:d1]
+ [:e1]
+ [:f1]
+ [:g1]
+ [:h1]
+ [:i1]
+ [:a2]
+ [:a3]
+ [:b1]
+ [:b2]
+ [:b3]
+ [:c1]
+ [:c2]
+ [:c3]]
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-chars
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/create-grid-vector
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/is-valid-value?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/is-filled?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/val?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] 2,
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] 8,
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] 4,
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] 2,
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/is-filled?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/val?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] #{nil},
+ [:h7] #{nil},
+ [:d8] #{nil},
+ [:g5] #{nil},
+ [:d6] 2,
+ [:e6] #{nil},
+ [:b3] #{nil},
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] #{nil},
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] #{nil},
+ [:h1] 8,
+ [:e3] #{nil},
+ [:b7] #{nil},
+ [:f2] #{nil},
+ [:c7] 4,
+ [:a2] #{nil},
+ [:h8] #{nil},
+ [:i6] #{nil},
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] #{nil},
+ [:d9] #{nil},
+ [:e8] #{nil},
+ [:a8] #{nil},
+ [:c5] #{nil},
+ [:d1] #{nil},
+ [:g1] #{nil},
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] #{nil},
+ [:a5] 2,
+ [:b2] #{nil},
+ [:c9] #{nil},
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] #{nil},
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] #{nil},
+ [:f8] #{nil},
+ [:f1] #{nil},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] 2,
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] 8,
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] 4,
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] 2,
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+; Syntax error macroexpanding clojure.core/cond at (src/sudoku_solver/core.clj:130:3).
+; cond requires an even number of forms
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+false
+clj꞉sudoku-solver.core꞉> 
+; Syntax error macroexpanding clojure.core/cond at (src/sudoku_solver/core.clj:131:3).
+; cond requires an even number of forms
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#{7 1 4 6 3 2 9 5 8}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/reduce-true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/assign
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/reduce-true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/assign
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/assign (form-init6323923537190004465.clj:156).
+; Wrong number of args (4) passed to: sudoku-solver.core/reduce-true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/assign
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/p-grid
+clj꞉sudoku-solver.core꞉> 
+(nil
+ nil
+ 3
+ nil
+ 2
+ nil
+ 6
+ nil
+ nil
+ 9
+ nil
+ nil
+ 3
+ nil
+ 5
+ nil
+ nil
+ 1
+ nil
+ nil
+ 1
+ 8
+ nil
+ 6
+ 4
+ nil
+ nil
+ nil
+ nil
+ 8
+ 1
+ nil
+ 2
+ 9
+ nil
+ nil
+ 7
+ nil
+ nil
+ nil
+ nil
+ nil
+ nil
+ nil
+ 8
+ nil
+ nil
+ 6
+ 7
+ nil
+ ...)
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] nil,
+ [:h7] nil,
+ [:d8] nil,
+ [:g5] nil,
+ [:d6] 2,
+ [:e6] nil,
+ [:b3] nil,
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] nil,
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] nil,
+ [:h1] 8,
+ [:e3] nil,
+ [:b7] nil,
+ [:f2] nil,
+ [:c7] 4,
+ [:a2] nil,
+ [:h8] nil,
+ [:i6] nil,
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] nil,
+ [:d9] nil,
+ [:e8] nil,
+ [:a8] nil,
+ [:c5] nil,
+ [:d1] nil,
+ [:g1] nil,
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] nil,
+ [:a5] 2,
+ [:b2] nil,
+ [:c9] nil,
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] nil,
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] nil,
+ [:f8] nil,
+ [:f1] nil,
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/grid-values
+clj꞉sudoku-solver.core꞉> 
+grid-values
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] nil,
+ [:h7] nil,
+ [:d8] nil,
+ [:g5] nil,
+ [:d6] 2,
+ [:e6] nil,
+ [:b3] nil,
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] nil,
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] nil,
+ [:h1] 8,
+ [:e3] nil,
+ [:b7] nil,
+ [:f2] nil,
+ [:c7] 4,
+ [:a2] nil,
+ [:h8] nil,
+ [:i6] nil,
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] nil,
+ [:d9] nil,
+ [:e8] nil,
+ [:a8] nil,
+ [:c5] nil,
+ [:d1] nil,
+ [:g1] nil,
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] nil,
+ [:a5] 2,
+ [:b2] nil,
+ [:c9] nil,
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] nil,
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] nil,
+ [:f8] nil,
+ [:f1] nil,
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/poss
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+#{2}
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+2
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+nil
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/poss
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+"1 value"
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+"1 value"
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+"1 value"
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+"1 value"
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+1 value
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+3
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+3
+clj꞉sudoku-solver.core꞉> 
+more than 1 value
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+5
+clj꞉sudoku-solver.core꞉> 
+; Syntax error macroexpanding clojure.core/cond at (src/sudoku_solver/core.clj:190:3).
+; cond requires an even number of forms
+clj꞉sudoku-solver.core꞉> 
+; Syntax error macroexpanding clojure.core/cond at (src/sudoku_solver/core.clj:190:3).
+; cond requires an even number of forms
+clj꞉sudoku-solver.core꞉> 
+; Syntax error macroexpanding clojure.core/cond at (src/sudoku_solver/core.clj:190:3).
+; cond requires an even number of forms
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+5
+clj꞉sudoku-solver.core꞉> 
+6
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+6
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+6
+clj꞉sudoku-solver.core꞉> 
+6
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+more than 1 values
+nil
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] 5,
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] 5,
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6 5},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/poss
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/peers
+clj꞉sudoku-solver.core꞉> 
+[[:a2]
+ [:a3]
+ [:a4]
+ [:a5]
+ [:a6]
+ [:a7]
+ [:a8]
+ [:a9]
+ [:b1]
+ [:c1]
+ [:d1]
+ [:e1]
+ [:f1]
+ [:g1]
+ [:h1]
+ [:i1]
+ [:a2]
+ [:a3]
+ [:b1]
+ [:b2]
+ [:b3]
+ [:c1]
+ [:c2]
+ [:c3]]
+clj꞉sudoku-solver.core꞉> peers
+{[:e9]
+ [[:e1]
+  [:e2]
+  [:e3]
+  [:e4]
+  [:e5]
+  [:e6]
+  [:e7]
+  [:e8]
+  [:a9]
+  [:b9]
+  [:c9]
+  [:d9]
+  [:f9]
+  [:g9]
+  [:h9]
+  [:i9]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:e7]
+  [:e8]
+  [:f7]
+  [:f8]
+  [:f9]],
+ [:d7]
+ [[:d1]
+  [:d2]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:d8]
+  [:d9]
+  [:a7]
+  [:b7]
+  [:c7]
+  [:e7]
+  [:f7]
+  [:g7]
+  [:h7]
+  [:i7]
+  [:d8]
+  [:d9]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:f7]
+  [:f8]
+  [:f9]],
+ [:c2]
+ [[:c1]
+  [:c3]
+  [:c4]
+  [:c5]
+  [:c6]
+  [:c7]
+  [:c8]
+  [:c9]
+  [:a2]
+  [:b2]
+  [:d2]
+  [:e2]
+  [:f2]
+  [:g2]
+  [:h2]
+  [:i2]
+  [:a1]
+  [:a2]
+  [:a3]
+  [:b1]
+  [:b2]
+  [:b3]
+  [:c1]
+  [:c3]],
+ [:h7]
+ [[:h1]
+  [:h2]
+  [:h3]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:h8]
+  [:h9]
+  [:a7]
+  [:b7]
+  [:c7]
+  [:d7]
+  [:e7]
+  [:f7]
+  [:g7]
+  [:i7]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:h8]
+  [:h9]
+  [:i7]
+  [:i8]
+  [:i9]],
+ [:d8]
+ [[:d1]
+  [:d2]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:d7]
+  [:d9]
+  [:a8]
+  [:b8]
+  [:c8]
+  [:e8]
+  [:f8]
+  [:g8]
+  [:h8]
+  [:i8]
+  [:d7]
+  [:d9]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:f7]
+  [:f8]
+  [:f9]],
+ [:g5]
+ [[:g1]
+  [:g2]
+  [:g3]
+  [:g4]
+  [:g6]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:a5]
+  [:b5]
+  [:c5]
+  [:d5]
+  [:e5]
+  [:f5]
+  [:h5]
+  [:i5]
+  [:g4]
+  [:g6]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i5]
+  [:i6]],
+ [:d6]
+ [[:d1]
+  [:d2]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:a6]
+  [:b6]
+  [:c6]
+  [:e6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:i6]
+  [:d4]
+  [:d5]
+  [:e4]
+  [:e5]
+  [:e6]
+  [:f4]
+  [:f5]
+  [:f6]],
+ [:e6]
+ [[:e1]
+  [:e2]
+  [:e3]
+  [:e4]
+  [:e5]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:a6]
+  [:b6]
+  [:c6]
+  [:d6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:i6]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:e4]
+  [:e5]
+  [:f4]
+  [:f5]
+  [:f6]],
+ [:b3]
+ [[:b1]
+  [:b2]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:a3]
+  [:c3]
+  [:d3]
+  [:e3]
+  [:f3]
+  [:g3]
+  [:h3]
+  [:i3]
+  [:a1]
+  [:a2]
+  [:a3]
+  [:b1]
+  [:b2]
+  [:c1]
+  [:c2]
+  [:c3]],
+ [:h9]
+ [[:h1]
+  [:h2]
+  [:h3]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:h7]
+  [:h8]
+  [:a9]
+  [:b9]
+  [:c9]
+  [:d9]
+  [:e9]
+  [:f9]
+  [:g9]
+  [:i9]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:h7]
+  [:h8]
+  [:i7]
+  [:i8]
+  [:i9]],
+ [:i5]
+ [[:i1]
+  [:i2]
+  [:i3]
+  [:i4]
+  [:i6]
+  [:i7]
+  [:i8]
+  [:i9]
+  [:a5]
+  [:b5]
+  [:c5]
+  [:d5]
+  [:e5]
+  [:f5]
+  [:g5]
+  [:h5]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i6]],
+ [:e4]
+ [[:e1]
+  [:e2]
+  [:e3]
+  [:e5]
+  [:e6]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:a4]
+  [:b4]
+  [:c4]
+  [:d4]
+  [:f4]
+  [:g4]
+  [:h4]
+  [:i4]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:e5]
+  [:e6]
+  [:f4]
+  [:f5]
+  [:f6]],
+ [:g4]
+ [[:g1]
+  [:g2]
+  [:g3]
+  [:g5]
+  [:g6]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:a4]
+  [:b4]
+  [:c4]
+  [:d4]
+  [:e4]
+  [:f4]
+  [:h4]
+  [:i4]
+  [:g5]
+  [:g6]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i5]
+  [:i6]],
+ [:a7]
+ [[:a1]
+  [:a2]
+  [:a3]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:a8]
+  [:a9]
+  [:b7]
+  [:c7]
+  [:d7]
+  [:e7]
+  [:f7]
+  [:g7]
+  [:h7]
+  [:i7]
+  [:a8]
+  [:a9]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:c7]
+  [:c8]
+  [:c9]],
+ [:a3]
+ [[:a1]
+  [:a2]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b3]
+  [:c3]
+  [:d3]
+  [:e3]
+  [:f3]
+  [:g3]
+  [:h3]
+  [:i3]
+  [:a1]
+  [:a2]
+  [:b1]
+  [:b2]
+  [:b3]
+  [:c1]
+  [:c2]
+  [:c3]],
+ [:a1]
+ [[:a2]
+  [:a3]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b1]
+  [:c1]
+  [:d1]
+  [:e1]
+  [:f1]
+  [:g1]
+  [:h1]
+  [:i1]
+  [:a2]
+  [:a3]
+  [:b1]
+  [:b2]
+  [:b3]
+  [:c1]
+  [:c2]
+  [:c3]],
+ [:h1]
+ [[:h2]
+  [:h3]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:h7]
+  [:h8]
+  [:h9]
+  [:a1]
+  [:b1]
+  [:c1]
+  [:d1]
+  [:e1]
+  [:f1]
+  [:g1]
+  [:i1]
+  [:g1]
+  [:g2]
+  [:g3]
+  [:h2]
+  [:h3]
+  [:i1]
+  [:i2]
+  [:i3]],
+ [:e3]
+ [[:e1]
+  [:e2]
+  [:e4]
+  [:e5]
+  [:e6]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:a3]
+  [:b3]
+  [:c3]
+  [:d3]
+  [:f3]
+  [:g3]
+  [:h3]
+  [:i3]
+  [:d1]
+  [:d2]
+  [:d3]
+  [:e1]
+  [:e2]
+  [:f1]
+  [:f2]
+  [:f3]],
+ [:b7]
+ [[:b1]
+  [:b2]
+  [:b3]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:b8]
+  [:b9]
+  [:a7]
+  [:c7]
+  [:d7]
+  [:e7]
+  [:f7]
+  [:g7]
+  [:h7]
+  [:i7]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b8]
+  [:b9]
+  [:c7]
+  [:c8]
+  [:c9]],
+ [:f2]
+ [[:f1]
+  [:f3]
+  [:f4]
+  [:f5]
+  [:f6]
+  [:f7]
+  [:f8]
+  [:f9]
+  [:a2]
+  [:b2]
+  [:c2]
+  [:d2]
+  [:e2]
+  [:g2]
+  [:h2]
+  [:i2]
+  [:d1]
+  [:d2]
+  [:d3]
+  [:e1]
+  [:e2]
+  [:e3]
+  [:f1]
+  [:f3]],
+ [:c7]
+ [[:c1]
+  [:c2]
+  [:c3]
+  [:c4]
+  [:c5]
+  [:c6]
+  [:c8]
+  [:c9]
+  [:a7]
+  [:b7]
+  [:d7]
+  [:e7]
+  [:f7]
+  [:g7]
+  [:h7]
+  [:i7]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:c8]
+  [:c9]],
+ [:a2]
+ [[:a1]
+  [:a3]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b2]
+  [:c2]
+  [:d2]
+  [:e2]
+  [:f2]
+  [:g2]
+  [:h2]
+  [:i2]
+  [:a1]
+  [:a3]
+  [:b1]
+  [:b2]
+  [:b3]
+  [:c1]
+  [:c2]
+  [:c3]],
+ [:h8]
+ [[:h1]
+  [:h2]
+  [:h3]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:h7]
+  [:h9]
+  [:a8]
+  [:b8]
+  [:c8]
+  [:d8]
+  [:e8]
+  [:f8]
+  [:g8]
+  [:i8]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:h7]
+  [:h9]
+  [:i7]
+  [:i8]
+  [:i9]],
+ [:i6]
+ [[:i1]
+  [:i2]
+  [:i3]
+  [:i4]
+  [:i5]
+  [:i7]
+  [:i8]
+  [:i9]
+  [:a6]
+  [:b6]
+  [:c6]
+  [:d6]
+  [:e6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i5]],
+ [:b4]
+ [[:b1]
+  [:b2]
+  [:b3]
+  [:b5]
+  [:b6]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:a4]
+  [:c4]
+  [:d4]
+  [:e4]
+  [:f4]
+  [:g4]
+  [:h4]
+  [:i4]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c5]
+  [:c6]],
+ [:g7]
+ [[:g1]
+  [:g2]
+  [:g3]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:g8]
+  [:g9]
+  [:a7]
+  [:b7]
+  [:c7]
+  [:d7]
+  [:e7]
+  [:f7]
+  [:h7]
+  [:i7]
+  [:g8]
+  [:g9]
+  [:h7]
+  [:h8]
+  [:h9]
+  [:i7]
+  [:i8]
+  [:i9]],
+ [:e1]
+ [[:e2]
+  [:e3]
+  [:e4]
+  [:e5]
+  [:e6]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:a1]
+  [:b1]
+  [:c1]
+  [:d1]
+  [:f1]
+  [:g1]
+  [:h1]
+  [:i1]
+  [:d1]
+  [:d2]
+  [:d3]
+  [:e2]
+  [:e3]
+  [:f1]
+  [:f2]
+  [:f3]],
+ [:i8]
+ [[:i1]
+  [:i2]
+  [:i3]
+  [:i4]
+  [:i5]
+  [:i6]
+  [:i7]
+  [:i9]
+  [:a8]
+  [:b8]
+  [:c8]
+  [:d8]
+  [:e8]
+  [:f8]
+  [:g8]
+  [:h8]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:h7]
+  [:h8]
+  [:h9]
+  [:i7]
+  [:i9]],
+ [:d9]
+ [[:d1]
+  [:d2]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:d7]
+  [:d8]
+  [:a9]
+  [:b9]
+  [:c9]
+  [:e9]
+  [:f9]
+  [:g9]
+  [:h9]
+  [:i9]
+  [:d7]
+  [:d8]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:f7]
+  [:f8]
+  [:f9]],
+ [:e8]
+ [[:e1]
+  [:e2]
+  [:e3]
+  [:e4]
+  [:e5]
+  [:e6]
+  [:e7]
+  [:e9]
+  [:a8]
+  [:b8]
+  [:c8]
+  [:d8]
+  [:f8]
+  [:g8]
+  [:h8]
+  [:i8]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:e7]
+  [:e9]
+  [:f7]
+  [:f8]
+  [:f9]],
+ [:a8]
+ [[:a1]
+  [:a2]
+  [:a3]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:a7]
+  [:a9]
+  [:b8]
+  [:c8]
+  [:d8]
+  [:e8]
+  [:f8]
+  [:g8]
+  [:h8]
+  [:i8]
+  [:a7]
+  [:a9]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:c7]
+  [:c8]
+  [:c9]],
+ [:c5]
+ [[:c1]
+  [:c2]
+  [:c3]
+  [:c4]
+  [:c6]
+  [:c7]
+  [:c8]
+  [:c9]
+  [:a5]
+  [:b5]
+  [:d5]
+  [:e5]
+  [:f5]
+  [:g5]
+  [:h5]
+  [:i5]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c6]],
+ [:d1]
+ [[:d2]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:a1]
+  [:b1]
+  [:c1]
+  [:e1]
+  [:f1]
+  [:g1]
+  [:h1]
+  [:i1]
+  [:d2]
+  [:d3]
+  [:e1]
+  [:e2]
+  [:e3]
+  [:f1]
+  [:f2]
+  [:f3]],
+ [:g1]
+ [[:g2]
+  [:g3]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:a1]
+  [:b1]
+  [:c1]
+  [:d1]
+  [:e1]
+  [:f1]
+  [:h1]
+  [:i1]
+  [:g2]
+  [:g3]
+  [:h1]
+  [:h2]
+  [:h3]
+  [:i1]
+  [:i2]
+  [:i3]],
+ [:c3]
+ [[:c1]
+  [:c2]
+  [:c4]
+  [:c5]
+  [:c6]
+  [:c7]
+  [:c8]
+  [:c9]
+  [:a3]
+  [:b3]
+  [:d3]
+  [:e3]
+  [:f3]
+  [:g3]
+  [:h3]
+  [:i3]
+  [:a1]
+  [:a2]
+  [:a3]
+  [:b1]
+  [:b2]
+  [:b3]
+  [:c1]
+  [:c2]],
+ [:b6]
+ [[:b1]
+  [:b2]
+  [:b3]
+  [:b4]
+  [:b5]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:a6]
+  [:c6]
+  [:d6]
+  [:e6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:i6]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:c4]
+  [:c5]
+  [:c6]],
+ [:g6]
+ [[:g1]
+  [:g2]
+  [:g3]
+  [:g4]
+  [:g5]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:a6]
+  [:b6]
+  [:c6]
+  [:d6]
+  [:e6]
+  [:f6]
+  [:h6]
+  [:i6]
+  [:g4]
+  [:g5]
+  [:h4]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i5]
+  [:i6]],
+ [:d2]
+ [[:d1]
+  [:d3]
+  [:d4]
+  [:d5]
+  [:d6]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:a2]
+  [:b2]
+  [:c2]
+  [:e2]
+  [:f2]
+  [:g2]
+  [:h2]
+  [:i2]
+  [:d1]
+  [:d3]
+  [:e1]
+  [:e2]
+  [:e3]
+  [:f1]
+  [:f2]
+  [:f3]],
+ [:a5]
+ [[:a1]
+  [:a2]
+  [:a3]
+  [:a4]
+  [:a6]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b5]
+  [:c5]
+  [:d5]
+  [:e5]
+  [:f5]
+  [:g5]
+  [:h5]
+  [:i5]
+  [:a4]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c5]
+  [:c6]],
+ [:b2]
+ [[:b1]
+  [:b3]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:a2]
+  [:c2]
+  [:d2]
+  [:e2]
+  [:f2]
+  [:g2]
+  [:h2]
+  [:i2]
+  [:a1]
+  [:a2]
+  [:a3]
+  [:b1]
+  [:b3]
+  [:c1]
+  [:c2]
+  [:c3]],
+ [:c9]
+ [[:c1]
+  [:c2]
+  [:c3]
+  [:c4]
+  [:c5]
+  [:c6]
+  [:c7]
+  [:c8]
+  [:a9]
+  [:b9]
+  [:d9]
+  [:e9]
+  [:f9]
+  [:g9]
+  [:h9]
+  [:i9]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b7]
+  [:b8]
+  [:b9]
+  [:c7]
+  [:c8]],
+ [:h4]
+ [[:h1]
+  [:h2]
+  [:h3]
+  [:h5]
+  [:h6]
+  [:h7]
+  [:h8]
+  [:h9]
+  [:a4]
+  [:b4]
+  [:c4]
+  [:d4]
+  [:e4]
+  [:f4]
+  [:g4]
+  [:i4]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:h5]
+  [:h6]
+  [:i4]
+  [:i5]
+  [:i6]],
+ [:f7]
+ [[:f1]
+  [:f2]
+  [:f3]
+  [:f4]
+  [:f5]
+  [:f6]
+  [:f8]
+  [:f9]
+  [:a7]
+  [:b7]
+  [:c7]
+  [:d7]
+  [:e7]
+  [:g7]
+  [:h7]
+  [:i7]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:f8]
+  [:f9]],
+ [:g3]
+ [[:g1]
+  [:g2]
+  [:g4]
+  [:g5]
+  [:g6]
+  [:g7]
+  [:g8]
+  [:g9]
+  [:a3]
+  [:b3]
+  [:c3]
+  [:d3]
+  [:e3]
+  [:f3]
+  [:h3]
+  [:i3]
+  [:g1]
+  [:g2]
+  [:h1]
+  [:h2]
+  [:h3]
+  [:i1]
+  [:i2]
+  [:i3]],
+ [:a6]
+ [[:a1]
+  [:a2]
+  [:a3]
+  [:a4]
+  [:a5]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b6]
+  [:c6]
+  [:d6]
+  [:e6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:i6]
+  [:a4]
+  [:a5]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c5]
+  [:c6]],
+ [:c6]
+ [[:c1]
+  [:c2]
+  [:c3]
+  [:c4]
+  [:c5]
+  [:c7]
+  [:c8]
+  [:c9]
+  [:a6]
+  [:b6]
+  [:d6]
+  [:e6]
+  [:f6]
+  [:g6]
+  [:h6]
+  [:i6]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c5]],
+ [:c4]
+ [[:c1]
+  [:c2]
+  [:c3]
+  [:c5]
+  [:c6]
+  [:c7]
+  [:c8]
+  [:c9]
+  [:a4]
+  [:b4]
+  [:d4]
+  [:e4]
+  [:f4]
+  [:g4]
+  [:h4]
+  [:i4]
+  [:a4]
+  [:a5]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c5]
+  [:c6]],
+ [:a4]
+ [[:a1]
+  [:a2]
+  [:a3]
+  [:a5]
+  [:a6]
+  [:a7]
+  [:a8]
+  [:a9]
+  [:b4]
+  [:c4]
+  [:d4]
+  [:e4]
+  [:f4]
+  [:g4]
+  [:h4]
+  [:i4]
+  [:a5]
+  [:a6]
+  [:b4]
+  [:b5]
+  [:b6]
+  [:c4]
+  [:c5]
+  [:c6]],
+ [:f8]
+ [[:f1]
+  [:f2]
+  [:f3]
+  [:f4]
+  [:f5]
+  [:f6]
+  [:f7]
+  [:f9]
+  [:a8]
+  [:b8]
+  [:c8]
+  [:d8]
+  [:e8]
+  [:g8]
+  [:h8]
+  [:i8]
+  [:d7]
+  [:d8]
+  [:d9]
+  [:e7]
+  [:e8]
+  [:e9]
+  [:f7]
+  [:f9]],
+ [:f1]
+ [[:f2]
+  [:f3]
+  [:f4]
+  [:f5]
+  [:f6]
+  [:f7]
+  [:f8]
+  [:f9]
+  [:a1]
+  [:b1]
+  [:c1]
+  [:d1]
+  [:e1]
+  [:g1]
+  [:h1]
+  [:i1]
+  [:d1]
+  [:d2]
+  [:d3]
+  [:e1]
+  [:e2]
+  [:e3]
+  [:f2]
+  [:f3]],
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/peers
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/poss
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+; Syntax error compiling at (src/sudoku_solver/core.clj:226:16).
+; Unable to resolve symbol: do in this context
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/elim
+clj꞉sudoku-solver.core꞉> 
+whittling
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{1 6 3 2 5},
+ [:a7] #{6},
+ [:a3] #{3 2},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8}}
+clj꞉sudoku-solver.core꞉> 
