@@ -134,10 +134,8 @@
           (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
           new-poss-values)))))
 
-(defn extract-first-val [poss-values square-keyword]
-  (let [entry (find poss-values [square-keyword])]
-    (when entry
-      (-> entry second first))))
+(defn extract-first-val [poss-values square]
+  (let [val (first (get poss-values square))] val))
 
 
 ;; every square will only be associated
