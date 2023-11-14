@@ -124,32 +124,22 @@
                 (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
                 new-poss-values))))
 
-;; using the "thread last" macro for more understandable code
-(defn total-value-count [poss-values]
-    (->> poss-values
-    (vals)          ;; extract all values from poss-values map
-    (apply concat)  ;; combine all values into one vector
-    (count)))       ;; count number of values present
 
-(defn solved? [values]
-  (every? #(= 1 (count (values %))) squares))
+;; every square will only be associated
+;; w/one value once solved
+(defn solved? [square-vals]
+  (every? #(= 1 (count (square-vals %))) squares))
 
-;; min-key is applied to every square whose number of values exceeds 1
-(defn min-square [values]
-  (let [filtered-squares (filter #(> 1 (count (values %))) squares)]
-    (apply min-key (comp count values) filtered-squares)))
-
-(defn min-square [values]
-  (let [squares-by-num-poss (->> values
-                                (filter (comp #(> 1 (count (second %))) values))
-                                (map (fn [[square sq-vals]] [square (count sq-vals)])))]
-    (apply min-key second squares-by-num-poss)squares-by-num-poss))
+;; sort squares w/poss values by size of 
+;; possible values in ascending order
+(defn sort [square-vals]
+  (sort-by (comp count val) square-vals))
 
 ;; explore all possible combinations of square values
 ;; until a solution is reached
-(defn search [values] 
-   (if (solved? values) values ;; check if puzzle already solved 
-       (let [square (min-square values)] square)))
+(defn search [square-vals] 
+   (if (solved? square-vals) square-vals ;; check if puzzle already solved 
+       (let [asc-square-vals (sort square-vals)] ))) ;; start with elements close to being solved
 
 ; ===================================
 ; Utility Functions
