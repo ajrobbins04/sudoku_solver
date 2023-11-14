@@ -85,23 +85,15 @@
 (defn add-initial-values [grid-chars]
   (zipmap squares (map #(if (is-valid-value? %) % nil) (create-int-grid grid-chars))))
 
-;; checks if the square is initially filled w/a value.
-;; a predicate function for parse-grid.
-(defn is-filled? [value] 
-  (not (= value nil)))
-
-;; Converts grid squares into a map as the key w/all
-;; possible digit values as its corresponding value.
+;; Renders a map of squares w/all their possible values
 (defn parse-grid [grid]
   (let [grid-values (add-initial-values grid)]
     (into {} (for [square squares]
              (let [value (grid-values square)]
-               (if (is-filled? value) 
-                 [square #{value}]      ;; assign digits 1-9 to empty squares
-                 [square digits]))))))  ;; assign actual value to filled squares
-
-
-
+               (if (nil? value) 
+                 [square digits]         ;; assign digits 1-9 for empty squares
+                 [square #{value}])))))) ;; assign given value for filled squares
+                 
 (parse-grid grid-chars)
 ; ==============================================
 ;
@@ -124,7 +116,7 @@
 
 (defn eliminate [poss-values square val]
   (cond
-    ;; Return possible values when val isn't found in it
+    ;; Return possible values when val isn't found in possible values
     (not (in-poss-values? (poss-values square) val)) poss-values
     (= #{val} (poss-values square)) poss-values
     :else (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
@@ -132,9 +124,33 @@
                 (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
                 new-poss-values))))
 
+;; using the "thread last" macro for more understandable code
+(defn total-value-count [poss-values]
+    (->> poss-values
+    (vals)          ;; extract all values from poss-values map
+    (apply concat)  ;; combine all values into one vector
+    (count)))       ;; count number of values present
 
-(defn search [poss-grid-values]
-  ())
+(defn solved? [values]
+  (every? #(= 1 (count (values %))) squares))
+
+;; min-key is applied to every square whose number of values exceeds 1
+(defn min-square [values]
+  (let [filtered-squares (filter #(> 1 (count (values %))) squares)]
+    (apply min-key (comp count values) filtered-squares)))
+
+(defn min-square [values]
+  (let [squares-by-num-poss (->> values
+                                (filter (comp #(> 1 (count (second %))) values))
+                                (map (fn [[square sq-vals]] [square (count sq-vals)])))]
+    (apply min-key second squares-by-num-poss)))
+
+;; explore all possible combinations of square values
+;; until a solution is reached
+(defn search [values] 
+   (if (solved? values) values ;; check if puzzle already solved 
+       (let [square (min-square values)] square)))
+
 ; ===================================
 ; Utility Functions
 ; ===================================
@@ -155,4 +171,5 @@
   (reduce-true #(eliminate poss-values square val) poss-values (disj (poss-values square) val)))
 
 ()
-(defn solve [grid] (-> grid grid-values parse-grid search))
+(defn solve [grid] (-> grid parse-grid search))
+(solve grid-chars)

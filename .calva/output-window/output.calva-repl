@@ -729,3 +729,313 @@ clj꞉sudoku-solver.core꞉> 
  [:f1] #{7 1 4 6 3 2 9 5 8},
  ...}
 clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/eval8709 (form-init14541031290846270306.clj:122).
+; Wrong number of args (3) passed to: sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+nil
+clj꞉sudoku-solver.core꞉> 
+true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+false
+clj꞉sudoku-solver.core꞉> 
+true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/in-poss-values?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/reduce-true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+running
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ClassCastException) at sudoku-solver.core/search (form-init14541031290846270306.clj:131).
+; class clojure.lang.PersistentHashMap cannot be cast to class java.util.Map$Entry (clojure.lang.PersistentHashMap is in unnamed module of loader 'app'; java.util.Map$Entry is in module java.base of loader 'bootstrap')
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+{[:e9] 8,
+ [:d7] 9,
+ [:c2] nil,
+ [:h7] nil,
+ [:d8] nil,
+ [:g5] nil,
+ [:d6] 2,
+ [:e6] nil,
+ [:b3] nil,
+ [:h9] 9,
+ [:i5] 1,
+ [:e4] nil,
+ [:g4] 6,
+ [:a7] 6,
+ [:a3] 3,
+ [:a1] nil,
+ [:h1] 8,
+ [:e3] nil,
+ [:b7] nil,
+ [:f2] nil,
+ [:c7] 4,
+ [:a2] nil,
+ [:h8] nil,
+ [:i6] nil,
+ [:b4] 3,
+ [:g7] 5,
+ [:e1] 7,
+ [:i8] nil,
+ [:d9] nil,
+ [:e8] nil,
+ [:a8] nil,
+ [:c5] nil,
+ [:d1] nil,
+ [:g1] nil,
+ [:c3] 1,
+ [:b6] 5,
+ [:g6] 9,
+ [:d2] nil,
+ [:a5] 2,
+ [:b2] nil,
+ [:c9] nil,
+ [:h4] 2,
+ [:f7] 2,
+ [:g3] 2,
+ [:a6] nil,
+ [:c6] 6,
+ [:c4] 8,
+ [:a4] nil,
+ [:f8] nil,
+ [:f1] nil,
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+; Execution error (IllegalArgumentException) at sudoku-solver.core/parse-grid (form-init14541031290846270306.clj:92).
+; Don't know how to create ISeq from: java.lang.Integer
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/parse-grid
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/total-value-count
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+()
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solved?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solved?
+clj꞉sudoku-solver.core꞉> 
+{[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 9 5 8},
+ [:h7] #{7 1 4 6 3 2 9 5 8},
+ [:d8] #{7 1 4 6 3 2 9 5 8},
+ [:g5] #{7 1 4 6 3 2 9 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6},
+ [:a7] #{6},
+ [:a3] #{3},
+ [:a1] #{7 1 4 6 3 2 9 5 8},
+ [:h1] #{8},
+ [:e3] #{7 1 4 6 3 2 9 5 8},
+ [:b7] #{7 1 4 6 3 2 9 5 8},
+ [:f2] #{7 1 4 6 3 2 9 5 8},
+ [:c7] #{4},
+ [:a2] #{7 1 4 6 3 2 9 5 8},
+ [:h8] #{7 1 4 6 3 2 9 5 8},
+ [:i6] #{7 1 4 6 3 2 9 5 8},
+ [:b4] #{3},
+ [:g7] #{5},
+ [:e1] #{7},
+ [:i8] #{7 1 4 6 3 2 9 5 8},
+ [:d9] #{7 1 4 6 3 2 9 5 8},
+ [:e8] #{7 1 4 6 3 2 9 5 8},
+ [:a8] #{7 1 4 6 3 2 9 5 8},
+ [:c5] #{7 1 4 6 3 2 9 5 8},
+ [:d1] #{7 1 4 6 3 2 9 5 8},
+ [:g1] #{7 1 4 6 3 2 9 5 8},
+ [:c3] #{1},
+ [:b6] #{5},
+ [:g6] #{9},
+ [:d2] #{7 1 4 6 3 2 9 5 8},
+ [:a5] #{2},
+ [:b2] #{7 1 4 6 3 2 9 5 8},
+ [:c9] #{7 1 4 6 3 2 9 5 8},
+ [:h4] #{2},
+ [:f7] #{2},
+ [:g3] #{2},
+ [:a6] #{7 1 4 6 3 2 9 5 8},
+ [:c6] #{6},
+ [:c4] #{8},
+ [:a4] #{7 1 4 6 3 2 9 5 8},
+ [:f8] #{7 1 4 6 3 2 9 5 8},
+ [:f1] #{7 1 4 6 3 2 9 5 8},
+ ...}
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#function[clojure.core/count]
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solved?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solved?
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:139).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:140).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+[[:f6] 1]
+clj꞉sudoku-solver.core꞉> 
