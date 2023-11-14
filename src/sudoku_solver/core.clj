@@ -115,32 +115,48 @@
 (declare reduce-true)
 
 (defn eliminate [poss-values square val]
-  (cond
-    ;; Return possible values when val isn't found in possible values
-    (not (in-poss-values? (poss-values square) val)) poss-values
-    (= #{val} (poss-values square)) poss-values
-    :else (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
-            (if (= 1 (count (new-poss-values square)))
-                (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
-                new-poss-values))))
+  (let [square-poss-values (poss-values square)]
+    (cond
+      ;; Value is not found in possible values
+      (not (in-poss-values? square-poss-values val))
+      poss-values
+
+      ;; Value is already the only possible value
+      (= #{val} square-poss-values)
+      (reduce-true (fn [values s] (eliminate values s val)) poss-values (peers square))
+
+      :else
+      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
+        (if (= 1 (count (new-poss-values square)))
+          (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
+          new-poss-values)))))
+
 
 
 ;; every square will only be associated
 ;; w/one value once solved
-(defn solved? [square-vals]
-  (every? #(= 1 (count (square-vals %))) squares))
+(defn solved? [poss-values]
+  (every? #(= 1 (count (poss-values %))) squares))
 
 ;; sort squares w/poss values by size of 
 ;; possible values in ascending order
-(defn sort [square-vals]
-  (sort-by (comp count val) square-vals))
+(defn sort [poss-values]
+  (sort-by (comp count val) poss-values))
+
 
 ;; explore all possible combinations of square values
 ;; until a solution is reached
-(defn search [square-vals] 
-   (if (solved? square-vals) square-vals ;; check if puzzle already solved 
-       (let [asc-square-vals (sort square-vals)] ))) ;; start with elements close to being solved
-
+(defn search [poss-values]
+  (if (solved? poss-values)  ;; check if puzzle already solved 
+    poss-values              ;; return solution if solved
+    (let [asc-poss-values (sort poss-values)]   ;; start with squares closest to being solved
+      (if (= 1 (count (second (first asc-poss-values))))
+        (let [first-square (first asc-poss-values)]
+          (search (assign poss-values (first first-square) (first (second first-square))))
+        )
+        (search (reduce-true (fn [values s] (eliminate values (first (first asc-poss-values)) (first (second (first asc-poss-values)))))
+                             asc-poss-values
+                             (peers (first (first asc-poss-values)))))))))
 ; ===================================
 ; Utility Functions
 ; ===================================
@@ -156,10 +172,10 @@
         (when-let [val* (func val (first collection))] ;; when-let only binds the result to val if the result is truthy
           (recur val* (rest collection)))))))          ;; updated values will be used to re-enter the loop
 
-(defn assign [poss-values square val] 
-  ;; eliminate is applied w/in reduce-true
-  (reduce-true #(eliminate poss-values square val) poss-values (disj (poss-values square) val)))
 
-()
+
+(defn assign [poss-values square val];; eliminate is applied w/in reduce-true
+  (reduce-true #(eliminate %1 square val) poss-values (disj (poss-values square) val)))
+
 (defn solve [grid] (-> grid parse-grid search))
 (solve grid-chars)
