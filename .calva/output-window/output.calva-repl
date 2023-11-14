@@ -52296,3 +52296,168 @@ Value: 7
  [[:b3] #{7 1 4 6 3 2 9 5 8}]
  [[:e4] #{7 1 4 6 3 2 9 5 8}])
 clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/get-first-val
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+Value: 8
+Processing square: [:d7]
+Possible values: #{9}
+Value: 9
+Processing square: [:d6]
+Possible values: #{2}
+Value: 2
+Processing square: [:h9]
+Possible values: #{9}
+Value: 9
+Processing square: [:i5]
+Possible values: #{1}
+Value: 1
+Processing square: [:g4]
+Possible values: #{6}
+Value: 6
+Processing square: [:c2]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:h7]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:d8]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:g5]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:e6]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+Processing square: [:e4]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+([[:e9] #{8}]
+ [[:d7] #{9}]
+ [[:d6] #{2}]
+ [[:h9] #{9}]
+ [[:i5] #{1}]
+ [[:g4] #{6}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+Value: 8
+Processing square: [:d7]
+Possible values: #{9}
+Value: nil
+Processing square: [:d6]
+Possible values: #{2}
+Value: nil
+Processing square: [:h9]
+Possible values: #{9}
+Value: nil
+Processing square: [:i5]
+Possible values: #{1}
+Value: nil
+Processing square: [:g4]
+Possible values: #{6}
+Value: nil
+Processing square: [:c2]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:h7]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:d8]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:g5]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:e6]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+Processing square: [:e4]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+([[:e9] #{8}]
+ [[:d7] #{9}]
+ [[:d6] #{2}]
+ [[:h9] #{9}]
+ [[:i5] #{1}]
+ [[:g4] #{6}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+Value: 8
+Processing square: [:d7]
+Possible values: #{9}
+Value: 9
+Processing square: [:d6]
+Possible values: #{2}
+Value: 2
+Processing square: [:h9]
+Possible values: #{9}
+Value: 9
+Processing square: [:i5]
+Possible values: #{1}
+Value: 1
+Processing square: [:g4]
+Possible values: #{6}
+Value: 6
+Processing square: [:c2]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:h7]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:d8]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:g5]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: 7
+Processing square: [:e6]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+Processing square: [:e4]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: 7
+([[:e9] #{8}]
+ [[:d7] #{9}]
+ [[:d6] #{2}]
+ [[:h9] #{9}]
+ [[:i5] #{1}]
+ [[:g4] #{6}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}])
+clj꞉sudoku-solver.core꞉> 

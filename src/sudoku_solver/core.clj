@@ -113,7 +113,6 @@
     true 
     false))
 
-(declare assign)
 (declare reduce-true)
 
 (defn eliminate [poss-values square val]
@@ -134,10 +133,6 @@
           (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
           new-poss-values)))))
 
-(defn extract-first-val [poss-values square]
-  (let [val (first (get poss-values square))] val))
-
-
 ;; every square will only be associated
 ;; w/one value once solved
 (defn solved? [poss-values]
@@ -148,28 +143,25 @@
 (defn asc-sort [poss-values]
   (sort-by (comp count val) poss-values))
 
-(defn search [poss-values]
-  (if (solved? poss-values)  ;; check if puzzle already solved 
-    poss-values              ;; return solution if solved
-    (let [asc-poss-values (asc-sort poss-values)]
-      (reduce-true (fn [values square] 
-                     (let [square-poss-values (values square)]
-                       (println "Processing square:" square)
-                       (println "Possible values:" square-poss-values)
-                       (eliminate poss-values square (first (square-poss-values)) ))
-                     ) poss-values (map first asc-poss-values))asc-poss-values)))
+;; returns first value in a set of possible values
+;; associate w/a given square
+(defn get-first-val [poss-values square]
+  (first (get poss-values square)))
 
 (defn search [poss-values]
-  (if (solved? poss-values)  ;; check if puzzle already solved 
-    poss-values              ;; return solution if solved
-    (let [asc-poss-values (asc-sort poss-values)]
+  (if (solved? poss-values)  ;; will return puzzle if already solved 
+    poss-values             
+    ;; create map sorted by num of possible values w/smallest first
+    (let [asc-poss-values (asc-sort poss-values)] 
+      ;; squares will be ordered so most likely to be solved are evaluated first
       (let [asc-squares (map first asc-poss-values)]
-      (reduce-true (fn [values square] 
-                     (let [val (extract-first-val values square)]
+      (reduce-true (fn [values square]
+                     ;; set val to the square's first possible value 
+                     (let [val (get-first-val values square)]
                        (println "Processing square:" square)
                        (println "Possible values:" (poss-values square))
                        (println "Value:" val)
-                       (eliminate poss-values square val ))
+                       (eliminate values square val ))
                      )poss-values asc-squares)) asc-poss-values)))
 
 
