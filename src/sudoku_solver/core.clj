@@ -109,7 +109,9 @@
 
 ;; checks if a value is in the possible values 
 (defn in-poss-values? [poss-values val]
-  (if (some #(= val %) poss-values) true false))
+  (if (some #(= val %) poss-values) 
+    true 
+    false))
 
 (declare assign)
 (declare reduce-true)
@@ -123,6 +125,7 @@
 
       ;; Value is already the only possible value
       (= #{val} square-poss-values)
+      ;; 
       (reduce-true (fn [values s] (eliminate values s val)) poss-values (peers square))
 
       :else
@@ -131,6 +134,10 @@
           (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
           new-poss-values)))))
 
+(defn extract-first-val [poss-values square-keyword]
+  (let [entry (find poss-values [square-keyword])]
+    (when entry
+      (-> entry second first))))
 
 
 ;; every square will only be associated
@@ -140,23 +147,34 @@
 
 ;; sort squares w/poss values by size of 
 ;; possible values in ascending order
-(defn sort [poss-values]
+(defn asc-sort [poss-values]
   (sort-by (comp count val) poss-values))
 
-
-;; explore all possible combinations of square values
-;; until a solution is reached
 (defn search [poss-values]
   (if (solved? poss-values)  ;; check if puzzle already solved 
     poss-values              ;; return solution if solved
-    (let [asc-poss-values (sort poss-values)]   ;; start with squares closest to being solved
-      (if (= 1 (count (second (first asc-poss-values))))
-        (let [first-square (first asc-poss-values)]
-          (search (assign poss-values (first first-square) (first (second first-square))))
-        )
-        (search (reduce-true (fn [values s] (eliminate values (first (first asc-poss-values)) (first (second (first asc-poss-values)))))
-                             asc-poss-values
-                             (peers (first (first asc-poss-values)))))))))
+    (let [asc-poss-values (asc-sort poss-values)]
+      (reduce-true (fn [values square] 
+                     (let [square-poss-values (values square)]
+                       (println "Processing square:" square)
+                       (println "Possible values:" square-poss-values)
+                       (eliminate poss-values square (first (square-poss-values)) ))
+                     ) poss-values (map first asc-poss-values))asc-poss-values)))
+
+(defn search [poss-values]
+  (if (solved? poss-values)  ;; check if puzzle already solved 
+    poss-values              ;; return solution if solved
+    (let [asc-poss-values (asc-sort poss-values)]
+      (let [asc-squares (map first asc-poss-values)]
+      (reduce-true (fn [values square] 
+                     (let [val (extract-first-val values square)]
+                       (println "Processing square:" square)
+                       (println "Possible values:" (poss-values square))
+                       (println "Value:" val)
+                       (eliminate poss-values square val ))
+                     )poss-values asc-squares)) asc-poss-values)))
+
+
 ; ===================================
 ; Utility Functions
 ; ===================================
@@ -174,8 +192,23 @@
 
 
 
-(defn assign [poss-values square val];; eliminate is applied w/in reduce-true
+(defn whittle-values [poss-values square val];; eliminate is applied w/in reduce-true
   (reduce-true #(eliminate %1 square val) poss-values (disj (poss-values square) val)))
 
 (defn solve [grid] (-> grid parse-grid search))
 (solve grid-chars)
+
+(def poss {[:e9] #{8},
+ [:d7] #{9},
+ [:c2] #{7 1 4 6 3 2 5 8},
+ [:h7] #{7 1 4 6 3 2 5 8},
+ [:d8] #{7 1 4 6 3 2 5 8},
+ [:g5] #{7 1 4 6 3 2 5 8},
+ [:d6] #{2},
+ [:e6] #{7 1 4 6 3 2 9 5 8},
+ [:b3] #{7 1 4 6 3 2 9 5 8},
+ [:h9] #{9},
+ [:i5] #{1},
+ [:e4] #{7 1 4 6 3 2 9 5 8},
+ [:g4] #{6}})
+(search poss)

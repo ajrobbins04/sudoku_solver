@@ -52009,3 +52009,176 @@ clj꞉sudoku-solver.core꞉> 
 clj꞉sudoku-solver.core꞉> 
 #'sudoku-solver.core/peers
 clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/poss
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+([:b3] [:c2] [:d6] [:d7] [:d8] [:e4] [:e6] [:e9] [:g4] [:g5] [:h7] [:h9] [:i5])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/search (form-init14541031290846270306.clj:175).
+; Wrong number of args (1) passed to: sudoku-solver.core/reduce-true
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+nil
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+([[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:d6] #{2}]
+ [[:d7] #{9}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:e9] #{8}]
+ [[:g4] #{6}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:h9] #{9}]
+ [[:i5] #{1}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+([[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:d6] #{2}]
+ [[:d7] #{9}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:e9] #{8}]
+ [[:g4] #{6}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:h9] #{9}]
+ [[:i5] #{1}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+([[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:d6] #{2}]
+ [[:d7] #{9}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:e9] #{8}]
+ [[:g4] #{6}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:h9] #{9}]
+ [[:i5] #{1}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/sort
+; WARNING: sort already refers to: #'clojure.core/sort in namespace: sudoku-solver.core, being replaced by: #'sudoku-solver.core/sort
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/asc-sort
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+([[:e9] #{8}]
+ [[:d7] #{9}]
+ [[:d6] #{2}]
+ [[:h9] #{9}]
+ [[:i5] #{1}]
+ [[:g4] #{6}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}])
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/eliminate
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+; Execution error (ArityException) at sudoku-solver.core/search$fn (form-init14541031290846270306.clj:158).
+; Wrong number of args (0) passed to: clojure.lang.PersistentHashSet
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/extract-first-value
+clj꞉sudoku-solver.core꞉> 
+; Syntax error compiling at (src/sudoku_solver/core.clj:170:32).
+; Unable to resolve symbol: extract-first-val in this context
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/extract-first-val
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/search
+clj꞉sudoku-solver.core꞉> 
+Processing square: [:e9]
+Possible values: #{8}
+Value: nil
+Processing square: [:d7]
+Possible values: #{9}
+Value: nil
+Processing square: [:d6]
+Possible values: #{2}
+Value: nil
+Processing square: [:h9]
+Possible values: #{9}
+Value: nil
+Processing square: [:i5]
+Possible values: #{1}
+Value: nil
+Processing square: [:g4]
+Possible values: #{6}
+Value: nil
+Processing square: [:c2]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:h7]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:d8]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:g5]
+Possible values: #{7 1 4 6 3 2 5 8}
+Value: nil
+Processing square: [:e6]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+Processing square: [:b3]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+Processing square: [:e4]
+Possible values: #{7 1 4 6 3 2 9 5 8}
+Value: nil
+([[:e9] #{8}]
+ [[:d7] #{9}]
+ [[:d6] #{2}]
+ [[:h9] #{9}]
+ [[:i5] #{1}]
+ [[:g4] #{6}]
+ [[:c2] #{7 1 4 6 3 2 5 8}]
+ [[:h7] #{7 1 4 6 3 2 5 8}]
+ [[:d8] #{7 1 4 6 3 2 5 8}]
+ [[:g5] #{7 1 4 6 3 2 5 8}]
+ [[:e6] #{7 1 4 6 3 2 9 5 8}]
+ [[:b3] #{7 1 4 6 3 2 9 5 8}]
+ [[:e4] #{7 1 4 6 3 2 9 5 8}])
+clj꞉sudoku-solver.core꞉> 
