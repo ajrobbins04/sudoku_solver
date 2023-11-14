@@ -143,7 +143,7 @@
   (let [squares-by-num-poss (->> values
                                 (filter (comp #(> 1 (count (second %))) values))
                                 (map (fn [[square sq-vals]] [square (count sq-vals)])))]
-    (apply min-key second squares-by-num-poss)))
+    (apply min-key second squares-by-num-poss)squares-by-num-poss))
 
 ;; explore all possible combinations of square values
 ;; until a solution is reached

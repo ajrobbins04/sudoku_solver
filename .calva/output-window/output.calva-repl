@@ -1039,3 +1039,92 @@ clj꞉sudoku-solver.core꞉> 
 clj꞉sudoku-solver.core꞉> 
 [[:f6] 1]
 clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:146).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:146).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+[[:f6] 1]
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:146).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:146).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/solve
+clj꞉sudoku-solver.core꞉> 
+; Execution error (ArityException) at sudoku-solver.core/min-square (form-init14541031290846270306.clj:146).
+; Wrong number of args (1) passed to: clojure.core/min-key
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+[[:f6] 1]
+clj꞉sudoku-solver.core꞉> 
+#'sudoku-solver.core/min-square
+clj꞉sudoku-solver.core꞉> 
+([[:e9] 1]
+ [[:d7] 1]
+ [[:c2] 9]
+ [[:h7] 9]
+ [[:d8] 9]
+ [[:g5] 9]
+ [[:d6] 1]
+ [[:e6] 9]
+ [[:b3] 9]
+ [[:h9] 1]
+ [[:i5] 1]
+ [[:e4] 9]
+ [[:g4] 1]
+ [[:a7] 1]
+ [[:a3] 1]
+ [[:a1] 9]
+ [[:h1] 1]
+ [[:e3] 9]
+ [[:b7] 9]
+ [[:f2] 9]
+ [[:c7] 1]
+ [[:a2] 9]
+ [[:h8] 9]
+ [[:i6] 9]
+ [[:b4] 1]
+ [[:g7] 1]
+ [[:e1] 1]
+ [[:i8] 9]
+ [[:d9] 9]
+ [[:e8] 9]
+ [[:a8] 9]
+ [[:c5] 9]
+ [[:d1] 9]
+ [[:g1] 9]
+ [[:c3] 1]
+ [[:b6] 1]
+ [[:g6] 1]
+ [[:d2] 9]
+ [[:a5] 1]
+ [[:b2] 9]
+ [[:c9] 9]
+ [[:h4] 1]
+ [[:f7] 1]
+ [[:g3] 1]
+ [[:a6] 9]
+ [[:c6] 1]
+ [[:c4] 1]
+ [[:a4] 9]
+ [[:f8] 9]
+ [[:f1] 9]
+ ...)
+clj꞉sudoku-solver.core꞉> 
