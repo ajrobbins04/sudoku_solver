@@ -216,7 +216,7 @@
 
 
 (defn solve [grid] (-> grid parse-grid search))
-(solve grid-chars)
+
 
 (def poss-values {[:e9] #{8},
  [:d7] #{9},
