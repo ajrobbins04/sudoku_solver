@@ -25,9 +25,10 @@ These programs would have been more successful if they were written using Clojur
 so I would love to have that option whenever I start another project where an object-oriented
 approach isn't the most ideal.
 
+# Demo Videso
 
-*[Sudoku Solver: Part 1 (6:24)](https://youtu.be/uVps3LiKvTw)
-*[Sudoku Solver: Part 2 (3:53)](https://youtu.be/GrnOPjG7hks)
+* [Sudoku Solver: Part 1 (6:24)](https://youtu.be/uVps3LiKvTw)
+* [Sudoku Solver: Part 2 (3:53)](https://youtu.be/GrnOPjG7hks)
 
 ### Note
 There was a glitch on Screencast-O-Matic that ended the recording early. But, it ended it at the perfect time since everything in part 2 is a work in progress, while the content in part 1 is
