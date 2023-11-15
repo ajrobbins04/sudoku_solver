@@ -26,18 +26,20 @@ so I would love to have that option whenever I start another project where an ob
 approach isn't the most ideal.
 
 
-[Sudoku Solver: Part 1 (6:24)](https://youtu.be/uVps3LiKvTw)
-[Sudoku Solver: Part 2 (3:53)](https://youtu.be/GrnOPjG7hks)
-**Note:**There was a glitch on Screencast-O-Matic that ended the recording early. But, it ended it at the perfect time since everything in part 2 is a work in progress, while the content in part 1 is
+*[Sudoku Solver: Part 1 (6:24)](https://youtu.be/uVps3LiKvTw)
+*[Sudoku Solver: Part 2 (3:53)](https://youtu.be/GrnOPjG7hks)
+
+### Note
+There was a glitch on Screencast-O-Matic that ended the recording early. But, it ended it at the perfect time since everything in part 2 is a work in progress, while the content in part 1 is
 complete (although I'm sure I can find ways to improve it).
 
 # Development Environment
 
 This program was written in Clojure using the Leiningen build tool. It does not import any Java classes, and it only uses built-in and user-defined functions.
 
-Clojure version 1.11.1
-Leiningen 2.10.0 
-Java 21.0.1 OpenJDK 64-Bit Server VM
+* Clojure version 1.11.1
+* Leiningen 2.10.0 
+* Java 21.0.1 OpenJDK 64-Bit Server VM
 
 # Useful Websites
 
