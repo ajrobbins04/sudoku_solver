@@ -1,22 +1,30 @@
-# sudoku_solver
+# Overview
 
-A Clojure library designed to ... well, that part is up to you.
+{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
-## Usage
+{Provide a description for the software that you wrote to demonstrate the Erlang language.}
 
-FIXME
+{Describe your purpose for writing this software.}
 
-## License
+{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running and a walkthrough of the code.  Focus should be on sharing what you learned about the language syntax.}
 
-Copyright © 2023 FIXME
+[Software Demo Video](http://youtube.link.goes.here)
 
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
+# Development Environment
 
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+{Describe the tools that you used to develop the software}
+
+{Describe the programming language that you used and any libraries.}
+
+# Useful Websites
+
+{Make a list of websites that you found helpful in this project}
+* [Web Site Name](http://url.link.goes.here)
+* [Web Site Name](http://url.link.goes.here)
+
+# Future Work
+
+{Make a list of things that you need to fix, improve, and add in the future.}
+* Item 1
+* Item 2
+* Item 3

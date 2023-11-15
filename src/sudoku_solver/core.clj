@@ -94,7 +94,6 @@
                  [square digits]         ;; assign digits 1-9 for empty squares
                  [square #{value}])))))) ;; assign given value for filled squares
                  
-(parse-grid grid-chars)
 ; ==============================================
 ;
 ; Constraint Propagation 
@@ -122,9 +121,9 @@
       (not (in-poss-values? square-poss-values val))
       poss-values
 
-      ;; Value is already the only possible value
+      ;; val is already the only possible value
       (= #{val} square-poss-values)
-      ;; 
+      ;; remove val from every peer that has it as a possible value
       (reduce-true (fn [values s] (eliminate values s val)) poss-values (peers square))
 
       :else
@@ -133,6 +132,59 @@
           (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
           new-poss-values)))))
 
+(defn eliminate [poss-values square val]
+  (let [square-poss-values (poss-values square)]
+    (cond
+      ;; Value is not found in possible values
+      (not (in-poss-values? square-poss-values val)) 
+      (do
+        (println "Eliminate - Value not found in possible values")
+        poss-values)
+
+      ;; Value is already the only possible value
+      (= #{val} square-poss-values) 
+      (do
+        (println "Eliminate - Value is already the only possible value")
+        (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square)))
+
+      :else
+      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
+        (do
+          (println "Eliminate - New Possible Values After Elimination:" (new-poss-values square))
+          (if (= 1 (count (new-poss-values square)))
+            (do
+              (println "Eliminate - Applying eliminate recursively")
+              (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square)))
+            (do
+              (println "Eliminate - Value not eliminated, returning new possible values")
+              new-poss-values)))))))
+
+(defn eliminate [poss-values square val]
+  (let [square-poss-values (poss-values square)]
+    (cond
+      ;; Value is not found in possible values
+      (not (in-poss-values? square-poss-values val))
+      (do
+        (println "Eliminate - Value not found in possible values")
+        poss-values)
+
+      ;; Value is already the only possible value
+      (= #{val} square-poss-values)
+      (do
+        (println "Eliminate - Value is already the only possible value")
+        (reduce-true (fn [values sq]
+                       (println "Eliminate - Applying eliminate recursively to peer:" sq)
+                       (eliminate values sq val))
+                     poss-values
+                     (peers square)))
+
+      :else
+      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
+        (do
+          (println "Eliminate - New Possible Values After Elimination:" (new-poss-values square))
+          (println "Eliminate - Applying eliminate recursively to all peers")
+          (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
+          new-poss-values)))))
 ;; every square will only be associated
 ;; w/one value once solved
 (defn solved? [poss-values]
@@ -182,23 +234,33 @@
 
 
 
-(defn whittle-values [poss-values square val];; eliminate is applied w/in reduce-true
-  (reduce-true #(eliminate %1 square val) poss-values (disj (poss-values square) val)))
-
 (defn solve [grid] (-> grid parse-grid search))
 (solve grid-chars)
 
-(def poss {[:e9] #{8},
+(def poss-values {[:e9] #{8},
  [:d7] #{9},
- [:c2] #{7 1 4 6 3 2 5 8},
- [:h7] #{7 1 4 6 3 2 5 8},
- [:d8] #{7 1 4 6 3 2 5 8},
- [:g5] #{7 1 4 6 3 2 5 8},
- [:d6] #{2},
+ [:c2] #{7 1 4 6 3 9 2 5 8},
+ [:h7] #{7 1 4 6 3 9 2 5 8},
+ [:d8] #{7 1 4 6 3 9 2 5 8},
+ [:g5] #{7 1},
+ [:d6] #{2 1 3},
  [:e6] #{7 1 4 6 3 2 9 5 8},
- [:b3] #{7 1 4 6 3 2 9 5 8},
- [:h9] #{9},
- [:i5] #{1},
+ [:b3] #{7 1 4 6 3 2 },
+ [:h9] #{5},
+ [:i5] #{1 5 6 2},
  [:e4] #{7 1 4 6 3 2 9 5 8},
- [:g4] #{6}})
-(search poss)
+ [:g4] #{6 5}})
+
+(def peers  
+  {[:d7] [[:c2]
+         [:h7]
+         [:d8]],
+  [:g5] [[:d6]
+         [:e6]
+         [:b3]],
+  [:h9] [[:i5]
+         [:e4]
+         [:g4]]})
+
+
+(search poss-values)
