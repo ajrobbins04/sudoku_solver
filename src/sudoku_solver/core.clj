@@ -93,7 +93,7 @@
                (if (nil? value) 
                  [square digits]         ;; assign digits 1-9 for empty squares
                  [square #{value}])))))) ;; assign given value for filled squares
-                 
+    (parse-grid grid-chars)            
 ; ==============================================
 ;
 ; Constraint Propagation 
@@ -107,48 +107,49 @@
 ; ==============================================
 
 ;; checks if a value is in the possible values 
-(defn in-poss-values? [poss-values val]
-  (if (some #(= val %) poss-values) 
+(defn in-poss-values? [poss-values square val]
+  (if (some #(= val %) (poss-values square)) 
     true 
     false))
 
 (declare reduce-true)
 
 (defn eliminate [poss-values square val]
-  (let [square-poss-values (poss-values square)]
-    (cond
-      ;; Value is not found in possible values
-      (not (in-poss-values? square-poss-values val))
-      poss-values
+  (cond
+    ;; Val is not found in possible values
+    (not (in-poss-values? poss-values square val)) 
+    poss-values
 
-      ;; val is already the only possible value
-      (= #{val} square-poss-values)
-      ;; remove val from every peer that has it as a possible value
-      (reduce-true (fn [values s] (eliminate values s val)) poss-values (peers square))
+    ;; Val is already the only possible value
+    (= #{val} (poss-values square)) 
+    ;; so remove val from possible values of peers
+    (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square))
 
-      :else
-      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
-        (if (= 1 (count (new-poss-values square)))
-          (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
-          new-poss-values)))))
+    :else
+    ;; "remove" val from possible values by creating a new map w/o it
+    (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
+      ;; only one value left after reduction
+      (if (= 1 (count (new-poss-values square)))
+        (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))))))
+
 
 (defn eliminate [poss-values square val]
-  (let [square-poss-values (poss-values square)]
+
     (cond
       ;; Value is not found in possible values
-      (not (in-poss-values? square-poss-values val)) 
+      (not (in-poss-values? poss-values square val)) 
       (do
         (println "Eliminate - Value not found in possible values")
         poss-values)
 
       ;; Value is already the only possible value
-      (= #{val} square-poss-values) 
+      (= #{val} (poss-values square)) 
       (do
         (println "Eliminate - Value is already the only possible value")
         (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square)))
 
       :else
-      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
+      (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
         (do
           (println "Eliminate - New Possible Values After Elimination:" (new-poss-values square))
           (if (= 1 (count (new-poss-values square)))
@@ -156,35 +157,9 @@
               (println "Eliminate - Applying eliminate recursively")
               (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square)))
             (do
-              (println "Eliminate - Value not eliminated, returning new possible values")
-              new-poss-values)))))))
+              (println "Eliminate - Value not eliminated, returning new possible values")))))))
 
-(defn eliminate [poss-values square val]
-  (let [square-poss-values (poss-values square)]
-    (cond
-      ;; Value is not found in possible values
-      (not (in-poss-values? square-poss-values val))
-      (do
-        (println "Eliminate - Value not found in possible values")
-        poss-values)
 
-      ;; Value is already the only possible value
-      (= #{val} square-poss-values)
-      (do
-        (println "Eliminate - Value is already the only possible value")
-        (reduce-true (fn [values sq]
-                       (println "Eliminate - Applying eliminate recursively to peer:" sq)
-                       (eliminate values sq val))
-                     poss-values
-                     (peers square)))
-
-      :else
-      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
-        (do
-          (println "Eliminate - New Possible Values After Elimination:" (new-poss-values square))
-          (println "Eliminate - Applying eliminate recursively to all peers")
-          (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
-          new-poss-values)))))
 ;; every square will only be associated
 ;; w/one value once solved
 (defn solved? [poss-values]
@@ -213,6 +188,7 @@
                        (println "Processing square:" square)
                        (println "Possible values:" (poss-values square))
                        (println "Value:" val)
+                       ;; run the eliminate method
                        (eliminate values square val ))
                      )poss-values asc-squares)) asc-poss-values)))
 
@@ -225,7 +201,7 @@
 ;; until a logical false is encountered
 (defn reduce-true
   [func val collection]
-  (when val   ;; check incoming val argument, is truthy 
+  (when val   ;; check incoming val argument, is true
     (loop [val val collection collection]   ;; bind the values from the arguments to the loop variables
       (if (empty? collection)   ;; if the collection is empty then return val
         val
