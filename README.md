@@ -11,7 +11,7 @@
 [Sudoku Solver: Part 1 (6:24)](https://youtu.be/uVps3LiKvTw)
 **Note:**There was a glitch on Screencast-O-Matic that ended the recording early. But, it ended it at the perfect time since everything
 in part 2 is a work in progress, while the content in part 1 is
-complete (but I'm sure I can find ways to improve it later on).
+complete (although I'm sure I can find ways to improve it).
 
 # Development Environment
 

@@ -107,57 +107,62 @@
 ; ==============================================
 
 ;; checks if a value is in the possible values 
-(defn in-poss-values? [poss-values square val]
-  (if (some #(= val %) (poss-values square)) 
+(defn in-poss-values? [poss-values val]
+  (if (some #(= val %) poss-values) 
     true 
     false))
 
 (declare reduce-true)
 
 (defn eliminate [poss-values square val]
-  (cond
-    ;; Val is not found in possible values
-    (not (in-poss-values? poss-values square val)) 
-    poss-values
-
-    ;; Val is already the only possible value
-    (= #{val} (poss-values square)) 
-    ;; so remove val from possible values of peers
-    (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square))
-
-    :else
-    ;; "remove" val from possible values by creating a new map w/o it
-    (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
-      ;; only one value left after reduction
-      (if (= 1 (count (new-poss-values square)))
-        (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))))))
-
-
-(defn eliminate [poss-values square val]
-
+  ;; contains the possible values for the given square
+  (let [square-poss-values (poss-values square)]
     (cond
       ;; Value is not found in possible values
-      (not (in-poss-values? poss-values square val)) 
+      (not (in-poss-values? square-poss-values val))
+      poss-values
+
+      ;; Value is already the only possible value, so only remove it from peers
+      (= #{val} square-poss-values)
+      (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square))
+
+      :else
+      ;; "remove" val from possible values by creating a new map w/o it
+      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
+        (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
+        new-poss-values))))
+
+
+
+;; same method, but contains output
+(defn eliminate [poss-values square val]
+  (let [square-poss-values (poss-values square)]
+    (cond
+      ;; Value is not found in possible values
+      (not (in-poss-values? square-poss-values val))
       (do
         (println "Eliminate - Value not found in possible values")
         poss-values)
 
       ;; Value is already the only possible value
-      (= #{val} (poss-values square)) 
+      (= #{val} square-poss-values)
       (do
         (println "Eliminate - Value is already the only possible value")
-        (reduce-true (fn [values sq] (eliminate values sq val)) poss-values (peers square)))
+        (reduce-true (fn [values sq]
+                       (println "Eliminate - Applying eliminate recursively to peer:" sq)
+                       (eliminate values sq val))
+                     poss-values
+                     (peers square)))
 
       :else
-      (let [new-poss-values (assoc-in poss-values [square] (disj (poss-values square) val))]
+      (let [new-poss-values (assoc-in poss-values [square] (disj square-poss-values val))]
         (do
           (println "Eliminate - New Possible Values After Elimination:" (new-poss-values square))
-          (if (= 1 (count (new-poss-values square)))
-            (do
-              (println "Eliminate - Applying eliminate recursively")
-              (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square)))
-            (do
-              (println "Eliminate - Value not eliminated, returning new possible values")))))))
+          (println "Eliminate - Applying eliminate recursively to all peers")
+          (reduce-true (fn [values s] (eliminate values s val)) new-poss-values (peers square))
+          new-poss-values)))))
+          
+
 
 
 ;; every square will only be associated
@@ -180,7 +185,7 @@
     poss-values             
     ;; create map sorted by num of possible values w/smallest first
     (let [asc-poss-values (asc-sort poss-values)] 
-      ;; squares will be ordered so most likely to be solved are evaluated first
+      ;; create collection of squares where the most likely to be solved are evaluated first
       (let [asc-squares (map first asc-poss-values)]
       (reduce-true (fn [values square]
                      ;; set val to the square's first possible value 
@@ -190,7 +195,7 @@
                        (println "Value:" val)
                        ;; run the eliminate method
                        (eliminate values square val ))
-                     )poss-values asc-squares)) asc-poss-values)))
+                     )poss-values asc-squares)))))
 
 
 ; ===================================
